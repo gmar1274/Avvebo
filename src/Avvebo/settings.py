@@ -17,9 +17,9 @@ from django.conf.global_settings import AUTH_USER_MODEL, EMAIL_HOST, EMAIL_HOST_
 #from Avvebo.website.models import AvveboProfile
 
 EMAIL_HOST_USER='gnmartinezedu@hotmail.com'
-EMAIL_HOST_PASSWORD='!gabe!Hotmail!gabe!'
+EMAIL_HOST_PASSWORD=''
 EMAIL_HOST ='smtp-mail.outlook.com'
-EMAIL_PORT=25#587 #25
+EMAIL_PORT=25
 EMAIL_USE_TLS=True
 EMAIL_USE_SSL=False
 
@@ -39,7 +39,7 @@ DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
+#MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 #STATIC_ROOT = os.path.join(DATA_DIR, 'static')
 
 STATICFILES_DIRS = (
@@ -98,6 +98,7 @@ TEMPLATES = [
        'DIRS': [   
                 os.path.join(BASE_DIR, 'website', 'templates'), 
                 os.path.join(BASE_DIR, 'Avvebo','website', 'templates', 'colorlib'),#this works
+                os.path.join(BASE_DIR, 'Avvebo','website', 'mytemplates'),
                 os.path.join(BASE_DIR, 'Avvebo','website', 'templates', 'startbootstrapadmin'),#this works
                  ],
         'APP_DIRS': True,
@@ -117,22 +118,11 @@ WSGI_APPLICATION = 'Avvebo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-'''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'avvebo',
-        'USER': 'admin',
-        'PASSWORD': '!acba!DB!acba!',
-        'HOST': 'avvwbo.csrwmqgpsqsd.us-east-1.rds.amazonaws.com',
-        'PORT': '3306',
     }
 }
 
@@ -169,15 +159,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-CACHE_BACKEND='db://my_cache_table'
-MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+#CACHE_BACKEND='db://my_cache_table'
+#MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
-'''
-STATIC_URL ='/static/'
-STATICFILES_DIRS = [
-    os.path.join(os.path.dirname(__file__), 'static').replace('\\','/'),#this is what made the static images work!!!
-    #os.path.join(os.path.dirname(__file__), 'website\\static').replace('\\','/'),
-]
-'''

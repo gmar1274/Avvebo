@@ -15,8 +15,7 @@ Including another URLconf
 """
 from django.urls import include,path,re_path
 from django.contrib import admin
-from Avvebo.website.views import *
-from Avvebo.website.models import *
+from Avvebo.website import urls as website_urls
 from django.urls import path, re_path, include
 
 from wagtail.admin import urls as wagtailadmin_urls
@@ -26,15 +25,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    #re_path(r'', include(wagtail_urls)),
     #path('admin/', admin.site.urls), 
-    path('admin/doc/', include('django.contrib.admindocs.urls')),
-    path('admin/',route, {'template':'adminindex.html'} ),
-    path('',route,{'template':'index.html'}),
-    re_path(r'^login/', route , {'template':'adminindex.html'}),
+    
+    re_path(r'',include(website_urls)),
     re_path(r'^cms/', include(wagtailadmin_urls)),
     re_path(r'^documents/', include(wagtaildocs_urls)),
+    re_path(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     re_path(r'^pages/', include(wagtail_urls)),
-    #path('login',route,{'template':'login.html'}),
+    
     #path('', route, {'template':'index.html','object_list':TalentContent.objects.all()}),
-    #re_path(r'^about$',route, {'template':'about.html'} ),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
